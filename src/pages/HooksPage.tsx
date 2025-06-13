@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { camsData, CamsCategory, Hook, Trigger } from '@/data/camsData';
 import HookCard from '@/components/HookCard';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Import Card components
 
 const HooksPage: React.FC = () => {
   const { categoryName, triggerId } = useParams<{ categoryName: string; triggerId: string }>();
@@ -38,17 +38,44 @@ const HooksPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 dark:bg-gray-900 p-6">
-      <div className="w-full max-w-6xl flex items-center justify-between mb-8">
-        <Button onClick={() => navigate(`/triggers/${category.name.toLowerCase()}`)} variant="outline" size="icon">
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 text-center">
-          Hooks for "{selectedTrigger.text}"
+      <div className="w-full max-w-5xl mx-auto mb-8">
+        {/* Breadcrumbs */}
+        <nav className="text-xs sm:text-sm text-gray-500 mb-4">
+          <Link to="/" className="hover:underline text-blue-700">Home</Link>
+          <span className="mx-2">/</span>
+          <Link to={`/triggers/${category.name.toLowerCase()}`} className="hover:underline text-blue-700">
+            {category.name}
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="font-semibold text-gray-700">Hooks</span>
+        </nav>
+        {/* Title */}
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-2">
+          Hooks for &quot;{selectedTrigger.text}&quot;
         </h1>
-        <div className="w-10"></div> {/* Placeholder for alignment */}
+        {/* Optional Subtitle */}
+        <p className="text-base sm:text-lg text-gray-500 mb-6">
+          Coaching hooks linked to this trigger.
+        </p>
+
+        {/* Source Trigger Card */}
+        <Card className="mb-8 p-4 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md">
+          <CardHeader className="p-0 pb-2">
+            <CardTitle className="text-xl font-bold text-gray-700 dark:text-gray-200">
+              Source Trigger:
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <p className="text-lg text-gray-900 dark:text-gray-50">
+              {selectedTrigger.text}
+            </p>
+          </CardContent>
+        </Card>
+
       </div>
+      {/* Centered grid with breathing room */}
       {linkedHooks.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10 items-start mt-4">
           {linkedHooks.map((hook: Hook, index: number) => (
             <HookCard
               key={index}

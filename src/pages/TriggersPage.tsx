@@ -1,9 +1,8 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { camsData, CamsCategory, Trigger } from '@/data/camsData';
 import TriggerCard from '@/components/TriggerCard';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
 
 const TriggersPage: React.FC = () => {
   const { categoryName } = useParams<{ categoryName: string }>();
@@ -29,16 +28,19 @@ const TriggersPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 dark:bg-gray-900 p-6">
-      <div className="w-full max-w-6xl flex items-center justify-between mb-8">
-        <Button onClick={() => navigate('/')} variant="outline" size="icon">
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
+      <div className="w-full max-w-5xl mx-auto mb-8">
+        {/* Breadcrumbs */}
+        <nav className="text-sm text-gray-500 mb-2">
+          <Link to="/" className="hover:underline text-blue-700">Home</Link>
+          <span className="mx-2">/</span>
+          <span className="font-semibold text-gray-700">{category.name}</span>
+        </nav>
+        {/* Title */}
         <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100">
           {category.name} Triggers
         </h1>
-        <div className="w-10"></div> {/* Placeholder for alignment */}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
         {category.triggers.map((trigger: Trigger) => (
           <TriggerCard
             key={trigger.id}
