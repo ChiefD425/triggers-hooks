@@ -2,8 +2,8 @@ import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { camsData, CamsCategory, Hook, Trigger } from '@/data/camsData';
 import HookCard from '@/components/HookCard';
+import TriggerCard from '@/components/TriggerCard';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Import Card components
 
 const HooksPage: React.FC = () => {
   const { categoryName, triggerId } = useParams<{ categoryName: string; triggerId: string }>();
@@ -49,29 +49,16 @@ const HooksPage: React.FC = () => {
           <span className="mx-2">/</span>
           <span className="font-semibold text-gray-700">Hooks</span>
         </nav>
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-2">
-          Hooks for &quot;{selectedTrigger.text}&quot;
-        </h1>
-        {/* Optional Subtitle */}
-        <p className="text-base sm:text-lg text-gray-500 mb-6">
-          Coaching hooks linked to this trigger.
-        </p>
-
-        {/* Source Trigger Card */}
-        <Card className="mb-8 p-4 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md">
-          <CardHeader className="p-0 pb-2">
-            <CardTitle className="text-xl font-bold text-gray-700 dark:text-gray-200">
-              Source Trigger:
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            <p className="text-lg text-gray-900 dark:text-gray-50">
-              {selectedTrigger.text}
-            </p>
-          </CardContent>
-        </Card>
-
+        {/* Source TriggerCard */}
+        <div className="flex flex-col items-center mb-8">
+          <TriggerCard
+            id={selectedTrigger.id}
+            text={selectedTrigger.text}
+            categoryName={category.name}
+            color={category.color}
+            onClick={() => navigate(`/triggers/${category.name.toLowerCase()}`)}
+          />
+        </div>
       </div>
       {/* Centered grid with breathing room */}
       {linkedHooks.length > 0 ? (

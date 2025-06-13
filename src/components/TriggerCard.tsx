@@ -24,9 +24,9 @@ const TriggerCard: React.FC<TriggerCardProps> = ({
       <span className="text-2xl font-bold text-white leading-none">Trigger</span>
     </div>
     <div className="flex-grow flex items-center justify-center px-2">
-      <span className="text-base font-bold text-black text-center leading-snug">{text}</span>
+      <span className="text-lg font-bold text-black text-center leading-snug">{text}</span>
     </div>
-    <div className="pb-2 text-center italic text-[15px] text-[#697c96]">
+    <div className="pb-2 text-center italic text-[15px] text-white">
       {categoryName}
     </div>
   </div>
