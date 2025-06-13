@@ -1,35 +1,38 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 
 interface HookCardProps {
   text: string;
   categoryName: string;
-  color: string; // Tailwind background color class for the category (e.g., "bg-blue-600")
+  color: string; // Tailwind color class, e.g. "bg-blue-600"
 }
 
-const HookCard: React.FC<HookCardProps> = ({ text, categoryName, color }) => {
-  // Extract the color name (e.g., "blue-600" from "bg-blue-600")
+const HookCard: React.FC<HookCardProps> = ({
+  text,
+  categoryName,
+  color,
+}) => {
+  // Convert "bg-blue-600" to "border-blue-600" for border and text color use
   const borderColorClass = color.replace('bg-', 'border-');
+  const textColorClass = color.replace('bg-', 'text-');
 
   return (
-    <Card
-      className={cn(
-        "w-48 h-64 flex flex-col justify-between text-white border-6",
-        "bg-black", // Main background is black
-        borderColorClass // Apply the dynamic border color class
-      )}
+    <div
+      className={`w-56 h-[340px] rounded-[32px] border-[8px] flex flex-col justify-between cursor-pointer min-w-0 bg-black ${borderColorClass}`}
+      style={{ boxSizing: 'border-box' }}
     >
-      <CardHeader className="p-3 pb-0">
-        <CardTitle className="text-sm font-semibold text-center text-white">Hook</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow flex flex-col items-center justify-center p-3 text-center">
-        <p className="text-lg font-bold text-white">{text}</p>
-      </CardContent>
-      <div className="p-2 text-xs text-center text-gray-100 italic">
+      {/* Header */}
+      <div className="pt-4 pb-1 text-center">
+        <span className="text-2xl font-bold text-white leading-none">Hook</span>
+      </div>
+      {/* Main Text */}
+      <div className="flex-grow flex items-center justify-center px-2">
+        <span className="text-base font-bold text-white text-center leading-snug">{text}</span>
+      </div>
+      {/* Footer */}
+      <div className={`pb-2 text-center italic text-[15px] ${textColorClass}`}>
         {categoryName}
       </div>
-    </Card>
+    </div>
   );
 };
 

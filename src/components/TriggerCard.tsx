@@ -1,35 +1,38 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 
 interface TriggerCardProps {
   id: number;
   text: string;
   categoryName: string;
-  color: string; // Tailwind background color class for the category
+  color: string;
   onClick: () => void;
 }
 
-const TriggerCard: React.FC<TriggerCardProps> = ({ id, text, categoryName, color, onClick }) => {
-  return (
-    <Card
-      className={cn(
-        "w-48 h-64 flex flex-col justify-between text-white cursor-pointer transition-transform transform hover:scale-105 border-6 border-black", // Black border, white text
-        color // Apply category color to the entire card background
-      )}
-      onClick={onClick}
-    >
-      <CardHeader className="p-3 pb-0">
-        <CardTitle className="text-sm font-semibold text-center text-white">Trigger</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow flex flex-col items-center justify-center p-3 text-center">
-        <p className="text-lg font-bold text-white">{text}</p>
-      </CardContent>
-      <div className="p-2 text-xs text-center text-gray-100 italic">
-        {categoryName}
-      </div>
-    </Card>
-  );
-};
+const TriggerCard: React.FC<TriggerCardProps> = ({
+  id,
+  text,
+  categoryName,
+  color,
+  onClick,
+}) => (
+  <div
+    className={`w-44 h-[270px] rounded-[24px] border-[4px] border-black flex flex-col justify-between cursor-pointer min-w-0 ${color}`}
+    onClick={onClick}
+    style={{ boxSizing: 'border-box' }}
+  >
+    {/* Header */}
+    <div className="pt-3 pb-1 text-center">
+      <span className="text-lg font-bold text-white leading-none">Trigger</span>
+    </div>
+    {/* Main Text */}
+    <div className="flex-grow flex items-center justify-center px-1">
+      <span className="text-sm font-bold text-black text-center leading-snug">{text}</span>
+    </div>
+    {/* Footer */}
+    <div className="pb-1 text-center italic text-[13px] text-[#697c96]">
+      {categoryName}
+    </div>
+  </div>
+);
 
 export default TriggerCard;
