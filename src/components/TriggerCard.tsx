@@ -14,7 +14,7 @@ const TriggerCard: React.FC<TriggerCardProps> = ({ id, text, categoryName, color
   return (
     <Card
       className={cn(
-        "w-48 h-64 flex flex-col justify-between text-white cursor-pointer transition-transform transform hover:scale-105 border-2 border-black",
+        "w-48 h-64 flex flex-col justify-between text-white cursor-pointer transition-transform transform hover:scale-105 border-6 border-black",
         color
       )}
       onClick={onClick}

@@ -15,7 +15,7 @@ const HookCard: React.FC<HookCardProps> = ({ text, categoryName, color }) => {
   return (
     <Card
       className={cn(
-        "w-48 h-64 flex flex-col justify-between text-white border-2",
+        "w-48 h-64 flex flex-col justify-between text-white border-6",
         "bg-black", // Main background is black
         borderColorClass // Apply the dynamic border color class
       )}
