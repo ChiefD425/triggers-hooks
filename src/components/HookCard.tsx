@@ -5,16 +5,19 @@ import { cn } from "@/lib/utils";
 interface HookCardProps {
   text: string;
   categoryName: string;
-  color: string; // Tailwind background color class for the category
+  color: string; // Tailwind background color class for the category (e.g., "bg-blue-600")
 }
 
 const HookCard: React.FC<HookCardProps> = ({ text, categoryName, color }) => {
+  // Extract the color name (e.g., "blue-600" from "bg-blue-600")
+  const borderColorClass = color.replace('bg-', 'border-');
+
   return (
     <Card
       className={cn(
         "w-48 h-64 flex flex-col justify-between text-white border-2",
         "bg-black", // Main background is black
-        `border-[var(--${color.replace('bg-', '')})]`, // Use the category color for the border
+        borderColorClass // Apply the dynamic border color class
       )}
     >
       <CardHeader className="p-3 pb-0">
