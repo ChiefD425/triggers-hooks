@@ -23,7 +23,7 @@ const HookCard: React.FC<HookCardProps> = ({
         <span className="text-2xl font-bold text-white leading-none">Hook</span>
       </div>
       <div className="flex-grow flex items-center justify-center px-2">
-        <span className="text-xl font-bold text-white text-center leading-snug">{text}</span>
+        <span className="text-lg font-bold text-white text-center leading-snug">{text}</span>
       </div>
       <div className={`pb-2 text-center italic text-[15px] ${textColorClass}`}>
         {categoryName}

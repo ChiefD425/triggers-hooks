@@ -18,7 +18,7 @@ export interface CamsCategory {
 export const camsData: CamsCategory[] = [
   {
     name: "Culture",
-    color: "#5393f5",
+    color: "bg-blue-600",
     triggers: [
       { id: 1, text: "Team members change, but the goals and timeline remain the same" },
       { id: 2, text: "Team is tired from the constant change" },
@@ -50,7 +50,7 @@ export const camsData: CamsCategory[] = [
   },
   {
     name: "Automation",
-    color: "#f58427",
+    color: "bg-orange-600",
     triggers: [
       { id: 1, text: "Team tracks requests outside of their work management tool" },
       { id: 2, text: "Team reacts to environmental issues as they are informed of them" },
@@ -82,7 +82,7 @@ export const camsData: CamsCategory[] = [
   },
   {
     name: "Measurement",
-    color: "#7ab950",
+    color: "bg-green-600",
     triggers: [
       { id: 1, text: "Team is asked to improve the performance of an application/service" },
       { id: 2, text: "Scrum Master is regularly asked for progress towards a delivery date" },
@@ -114,7 +114,7 @@ export const camsData: CamsCategory[] = [
   },
   {
     name: "Sharing",
-    color: "#9e6edc",
+    color: "bg-purple-600",
     triggers: [
       { id: 1, text: "New \"approval process\" created to gain alignment with stakeholders prior to planning" },
       { id: 2, text: "Continuous improvement items are regularly completed" },
