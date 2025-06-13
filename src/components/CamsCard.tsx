@@ -12,7 +12,7 @@ const CamsCard: React.FC<CamsCardProps> = ({ name, color, onClick }) => {
   return (
     <Card
       className={cn(
-        "w-48 h-48 flex flex-col items-center justify-center text-white cursor-pointer transition-transform transform hover:scale-105 border-2 border-white",
+        "w-48 h-64 flex flex-col items-center justify-center text-white cursor-pointer transition-transform transform hover:scale-105 border-2 border-white",
         color
       )}
       onClick={onClick}

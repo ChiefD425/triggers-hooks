@@ -12,7 +12,7 @@ const HookCard: React.FC<HookCardProps> = ({ text, categoryName, color }) => {
   return (
     <Card
       className={cn(
-        "w-64 h-48 flex flex-col justify-between text-white border-2 border-white",
+        "w-48 h-64 flex flex-col justify-between text-white border-2 border-white",
         color
       )}
     >
@@ -20,7 +20,7 @@ const HookCard: React.FC<HookCardProps> = ({ text, categoryName, color }) => {
         <CardTitle className="text-sm font-semibold text-center text-white">Hook</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col items-center justify-center p-3 text-center">
-        <p className="text-sm text-black">{text}</p>
+        <p className="text-lg font-bold text-black">{text}</p>
       </CardContent>
       <div className="p-2 text-xs text-center text-gray-100 italic">
         {categoryName}
